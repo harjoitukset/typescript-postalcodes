@@ -53,6 +53,15 @@ $ npx tsc
 $ node build/postalcodes.js 00100
 ```
 
+**Huom!** Ohjelmasi ei saa aiheuttaa käännösvirheitä tai varoituksia. Voit tarkastaa koodisi mahdollisten virheiden varalta komennolla:
+
+```
+$ npx tsc --noEmit
+```
+
+Jos yllä oleva komento ei tulosta mitään, kaikki on kunnossa. `--noEmit` tarkoittaa, että käännettyjä tiedostoja ei tallenneta `build`-hakemistoon.
+
+
 ## Postinumeroaineisto
 
 Tässä tehtävässä hyödynnetään CSV-muotoon tallennettua postinumeroaineistoa, joka löytyy tiedostosta [postalcodes.csv](./postalcodes.csv). Aineisto on muodostettu [Postin postiumerotiedostojen](https://www.posti.fi/fi/asiakastuki/postinumerotiedostot) pohjalta 5.1.2023.
@@ -150,3 +159,5 @@ Nimien ja postinumeroiden järjestäminen onnistuu taulukon [`sort`-metodilla](h
 let codes: string[] = ...;
 codes.sort();
 ```
+
+Valmiiksi asetettujen pakettien lisäksi saat lisätä `package.json`-tiedostoon myös muita paketteja, mutta se ei ole tehtävän ratkaisemiseksi välttämätöntä.
