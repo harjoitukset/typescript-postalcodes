@@ -2,6 +2,7 @@
 
 Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot seuraavien viikkojen tehtäville, joissa käsittelemme dataa ja testaamme ohjelmistoja [TypeScript-kielellä](https://www.typescriptlang.org/). Kaikkien kielen ominaisuuksien opetteleminen etukäteen ei ole kurssin kannalta tarkoituksenmukaista, joten tässä tehtävässä tutustutaan tarvittaviin työkaluihin sekä perusrakenteisiin kuten merkkijonot, taulukot ja ehto- sekä toistorakenteet. Lisäksi tehtävässä voi olla hyötyä esim. omista funktioista ja omien tyyppien määrittelemisestä.
 
+
 ## GitHub classroom
 
 Tehtävät arvostellaan käyttäen [GitHub classroom](https://classroom.github.com/) -palvelua, joka suorittaa ohjelmasi ja tarkastaa sekä pisteyttää tulokset automaattisesti. Taustalla GitHub classroom hyödyntää [GitHub actions](https://github.com/features/actions) -nimistä jatkuvan integroinnin palvelua, johon tutustumme kurssilla lisää myöhemmillä viikoilla.
@@ -87,7 +88,7 @@ Voit tutustua [postinumeroaineiston palvelukuvaukseen ja käyttöehtoihin postin
 > Postinumero­tiedostot. https://www.posti.fi/fi/asiakastuki/postinumerotiedostot
 
 
-## Osa 1: Postitoimipaikka (1 piste)
+## Osa 1: Postitoimipaikka (2 pistettä)
 
 Kirjoita TypeScript-kielinen ohjelma `src/postalcodes.ts`, joka kertoo postitoimipaikan nimen, kun sille annetaan parametrina postinumero.
 
@@ -103,7 +104,7 @@ Huolehdi siitä, että tuntemattoman postinumeron syöttäminen tai postinumeron
 Tiedoston pohjassa [src/postalcodes.ts](./src/postalcodes.ts) on valmiiksi esimerkkikoodeja, jotka auttavat sinut alkuun tiedoston lukemisessa ja parametrin käsittelyssä.
 
 
-## Osa 2: Postinumerot (2 pistettä)
+## Osa 2: Postinumerot (3 pistettä)
 
 Muokkaa ohjelmaasi siten, että käyttäjä voi antaa komentoriviparametrina postinumeron sijasta myös nimen. Ohjelmasi tulee tällöin listata kaikki kyseiseen nimeen liittyvät postinumerot samalla rivillä **kasvavassa järjestyksessä**.
 
@@ -116,25 +117,6 @@ Esimerkkisuoritus:
 
 Toteuta ohjelmasi siten, että syötetyn postitoimipaikan kirjainkoolla ei ole merkitystä. Huolehdi myös siitä, että tuntemattoman nimen syöttäminen ei kaada ohjelmaa.
 
-
-## Osa 3: kaikki tiedot ryhmiteltyinä (2 pistettä)
-
-Muokkaa ohjelmaasi siten, että käyttäjä voi antaa komentoriviparametrina edellä käsiteltyjen numeroiden ja nimien lisäksi myös tekstin `--all`. Ohjelmasi tulee tällöin listata kaikki aineistossa olevat postinumerot siten, että yhdelle riville tulostuu ensin postitoimipaikan nimi ja sen jälkeen kaikki kyseiseen nimeen liittyvät postinumerot. Sekä nimien että niihin liittyvien postinumeroiden tulee olla tulosteessa **kasvavassa järjestyksessä**.
-
-Ote esimerkkisuorituksesta:
-
-    $ npx ts-node src/postalcodes.ts --all
-    ...
-    Hamina: 49400, 49401, 49420, 49460, 49461
-    Hammarland: 22240
-    Hammaslahti: 82200, 82201
-    Hamula: 71890
-    Hangastenmaa: 52340
-    Hangonkylä: 10940
-    Hanhikoski: 61460
-    Hanhimaa: 99190
-    Hankasalmi: 41520, 41521
-    ...
 
 ## Vinkkejä
 
