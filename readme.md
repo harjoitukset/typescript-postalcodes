@@ -85,12 +85,6 @@ Tiedostossa kukin postinumero ja siihen liittyvä nimi esiintyvät omalla rivill
 
 Sama nimi voi esiintyä tiedostossa monen eri numeron kohdalla. Numerot ja nimet ovat tiedostossa sekalaisessa järjestyksessä.
 
-Voit tutustua [postinumeroaineiston palvelukuvaukseen ja käyttöehtoihin postin sivuilla](https://www.posti.fi/mzj3zpe8qb7p/1eKbwM2WAEY5AuGi5TrSZ7/33cfc2c66d2649af885b36e3935556a1/posti-postinumeropalvelut-palvelukuvaus-ja-kayttoehdot-20150101.pdf).
-
-> *"Tietoja voi luovuttaa edelleen, mutta aineistoja luovutettaessa on huolehdittava siitä, että luovutuksensaajalla on tieto palvelun käyttöehdoista sekä tietojen latauspäivämäärästä."*
->
-> Postinumero­tiedostot. https://www.posti.fi/fi/asiakastuki/postinumerotiedostot
-
 
 ## Osa 1: Postitoimipaikka (2 pistettä)
 
@@ -154,3 +148,24 @@ console.log(codes.join(', '));
 ```
 
 Valmiiksi asetettujen pakettien lisäksi saat lisätä `package.json`-tiedostoon myös muita paketteja, mutta se ei ole tehtävän ratkaisemiseksi välttämätöntä.
+
+
+## Tehtävän ratkaiseminen JavaScriptillä
+
+Tehtävä on mahdollista ratkaista myös JavaScriptillä, joskin se ei ole oppimisen näkökulmasta suositeltavaa. Mikäli ratkaiset tehtävän ilman TypeScriptiä, luo itse tarvitsemasi JS-tiedostot ja muuta [package.json](./package.json)-tiedostossa `start`-skriptin tilalle oman ohjelmasi käynnistyskomento, esim. `node ./src/postalcodes.js`. Tehtävän tarkastuksessa ohjelmasi suoritetaan esim. seuraavilla komennoilla, joten varmista että ne toimivat:
+
+```sh
+$ npm install
+$ npm start helsinki
+$ npm start 00100
+```
+
+
+## Lisenssit ja tekijänoikeudet
+
+Tehtävän postinumeroaineiston käyttäminen edellytää [Postin postiumerotiedostoja koskevien käyttöehtojen](https://www.posti.fi/fi/asiakastuki/postinumerotiedostot) noudattamista. Voit tutustua [postinumeroaineiston palvelukuvaukseen ja käyttöehtoihin postin sivuilla](https://www.posti.fi/mzj3zpe8qb7p/1eKbwM2WAEY5AuGi5TrSZ7/33cfc2c66d2649af885b36e3935556a1/posti-postinumeropalvelut-palvelukuvaus-ja-kayttoehdot-20150101.pdf).
+
+> *"Tietoja voi luovuttaa edelleen, mutta aineistoja luovutettaessa on huolehdittava siitä, että luovutuksensaajalla on tieto palvelun käyttöehdoista sekä tietojen latauspäivämäärästä."*
+>
+> Postinumero­tiedostot. https://www.posti.fi/fi/asiakastuki/postinumerotiedostot
+
