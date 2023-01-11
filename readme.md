@@ -30,7 +30,11 @@ Klikkaamalla yllä olevan linkin takaa viimeisintä "GitHub Classroom Workflow" 
 
 ## Riippuvuuksien asentaminen ja ohjelman suoritus
 
-Tehtävän suorittamiseksi tarvitset Node.js:n, [typescript-paketin](https://www.npmjs.com/package/typescript) sekä [ts-node-paketin](https://www.npmjs.com/package/ts-node). Node.js:n tulee löytyä kehitysympäristöstäsi valmiina. Paketit puolestaan ovat määritettynä tämän tehtäväpohjan [package.json](./package.json)-tiedostossa, joten pakettien asentamiseksi sinun tarvitsee vain ajaa komento `npm install` tehtävän päähakemistossa.
+Tehtävän suorittamiseksi tarvitset Node.js:n, [typescript-paketin](https://www.npmjs.com/package/typescript) sekä [ts-node-paketin](https://www.npmjs.com/package/ts-node). Node.js:n tulee löytyä kehitysympäristöstäsi valmiina. Paketit puolestaan ovat määritettynä tämän tehtäväpohjan [package.json](./package.json)-tiedostossa, joten pakettien asentamiseksi sinun tarvitsee vain ajaa komento `npm install` tehtävän päähakemistossa:
+
+```
+$ npm install
+```
 
 Kun riippuvuudet on asennettu, suosittelemme suorittamaan ohjelman `npx`-komennolla sekä `ts-node`-työkalulla, esim. seuraavasti:
 
@@ -135,11 +139,18 @@ interface PostOffice {
 }
 ```
 
-Nimien ja postinumeroiden järjestäminen onnistuu taulukon [`sort`-metodilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
+Postinumeroiden järjestäminen onnistuu taulukon [`sort`-metodilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
 
 ```ts
 let codes: string[] = ...;
 codes.sort();
+```
+
+Postinumeroiden yhdistäminen taulukosta pilkuilla erotelluksi listaksi onnistuu esim. [`join`-metodilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join):
+
+
+```ts
+console.log(codes.join(', '));
 ```
 
 Valmiiksi asetettujen pakettien lisäksi saat lisätä `package.json`-tiedostoon myös muita paketteja, mutta se ei ole tehtävän ratkaisemiseksi välttämätöntä.
