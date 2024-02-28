@@ -6,5 +6,6 @@
         "outDir": "./build/", /* Specify an output folder for all emitted files. */
         "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
         "strict": true, /* Enable all strict type-checking options. */
+        "moduleResolution":"node", /* see https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution */
     }
 }
