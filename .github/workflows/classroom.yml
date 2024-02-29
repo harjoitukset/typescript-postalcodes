@@ -20,4 +20,4 @@ jobs:
         run: npm install
 
       - uses: education/autograding@v1
-        if: github.repository_owner != 'harjoitukset'
+        if: github.actor != 'github-classroom[bot]'
