@@ -1,24 +1,24 @@
 {
-    "tests": [
-      {
-        "name": "1. Postitoimipaikka",
-        "setup": "npm install",
-        "run": "npm start 19230 | tr '[:upper:]' '[:lower:]'",
-        "input": "",
-        "output": "onkiniemi",
-        "comparison": "included",
-        "timeout": 1,
-        "points": 2
-      },
-      {
-        "name": "2. Postinumerot",
-        "setup": "npm install",
-        "run": "npm start tammisaari | tr '[:upper:]' '[:lower:]'",
-        "input": "",
-        "output": ".*10600[^\\d]+10601[^\\d]+10620[^\\d]+10650[^\\d]+10660.*",
-        "comparison": "regex",
-        "timeout": 1,
-        "points": 3
-      }
-    ]
-  }
+  "tests": [
+    {
+      "name": "1. Postitoimipaikka",
+      "setup": "npm install",
+      "run": "npm start 19230 | tr '[:upper:]' '[:lower:]'",
+      "input": "",
+      "output": "onkiniemi",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 40
+    },
+    {
+      "name": "2. Postinumerot",
+      "setup": "npm install",
+      "run": "npm start tammisaari | tr '[:upper:]' '[:lower:]'",
+      "input": "",
+      "output": ".*10600[^\\d]+10601[^\\d]+10620[^\\d]+10650[^\\d]+10660.*",
+      "comparison": "regex",
+      "timeout": 1,
+      "points": 60
+    }
+  ]
+}
