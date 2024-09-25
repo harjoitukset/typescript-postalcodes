@@ -1,8 +1,9 @@
 # TypeScript & postinumerot
 
-Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmille tehtäville, joissa käsittelemme dataa ja testaamme ohjelmistoja [TypeScript-kielellä](https://www.typescriptlang.org/). Kaikkien kielen ominaisuuksien opetteleminen etukäteen ei ole tarkoituksenmukaista, joten tässä tehtävässä tutustutaan tarvittaviin työkaluihin sekä perusrakenteisiin.
+Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmille tehtäville, joissa käsittelemme dataa ja testaamme ohjelmistoja [TypeScript-kielellä](https://www.typescriptlang.org/). Kaikkien kielen ominaisuuksien opetteleminen etukäteen ei ole tarkoituksenmukaista, joten tässä tehtävässä tutustutaan tarvittaviin työkaluihin sekä perusrakenteisiin. Tehtävässä voi olla hyötyä esim. omista funktioista ja omien tietotyyppien määrittelemisestä, mutta ne eivät ole välttämättömiä.
 
-Tehtävässä voi olla hyötyä esim. omista funktioista ja omien tietotyyppien määrittelemisestä, mutta ne eivät ole välttämättömiä.
+> [!NOTE]
+> Node.js ei **vielä** tue TypeScriptiä suoraan oletusasetuksilla, mutta tulevissa versioissa odotetaan mahdollisuutta ajaa TypeScriptiä ilman erillistä käännösvaihetta tai kokeellisia ominaisuuksia. Tämän tehtävän ohjeissa käytetään siksi `ts-node`-työkalua, jonka avulla Node.js voi suorittaa TypeScript-koodia helposti. Vaihtoehtoisia ympäristöjä, kuten [Deno](https://deno.com/) ja [Bun](https://bun.sh/), on myös olemassa, ja ne tukevat TypeScriptiä suoraan, mutta niiden käyttö on huomattavasti harvinaisempaa kuin Node.js:n.
 
 ## GitHub actions
 
@@ -55,11 +56,13 @@ Yllä käytetty komento skriptin suorittamiseksi koostuu muutamista osista, jois
 
 **Ts-node** on työkalu, joka mahdollistaa TypeScript-koodin suorittamisen suoraan Node.js-ympäristössä, kääntäen sen JavaScriptiksi taustalla reaaliaikaisesti.
 
-> _"`ts-node` is a TypeScript execution engine and REPL for Node.js. It JIT transforms TypeScript into JavaScript, enabling you to directly execute TypeScript on Node.js without precompiling. "_
+> _"`ts-node is` a TypeScript execution engine and REPL for Node.js._
 >
-> https://www.npmjs.com/package/ts-node
+> _It JIT<sup>1</sup> transforms TypeScript into JavaScript, enabling you to directly execute TypeScript on Node.js without precompiling. This is accomplished by hooking node's module loading APIs, enabling it to be used seamlessly alongside other Node.js tools and libraries."_
+>
+> https://typestrong.org/ts-node/docs/
 
-💡 _Node.js ei **vielä** tue TypeScriptiä suoraan, mutta on odotettavissa, että tulevissa versioissa TypeScriptiä voidaan suorittaa ilman käännösvaihetta tai kokeellisia ominaisuuksia._
+<sup>1</sup> JIT-muunnos (Just-In-Time transform) viittaa ohjelmakoodin kääntämiseen ajon aikana sen sijaan, että se tehtäisiin etukäteen.
 
 ### Tsc (TypeScript compiler)
 
@@ -176,13 +179,33 @@ interface PostOffice {
 }
 ```
 
-## Postinumeroaineiston isenssi ja tekijänoikeudet
+## Postinumeroaineiston lisenssi ja tekijänoikeudet
 
 Tehtävän postinumeroaineiston käyttäminen edellytää [Postin postiumerotiedostoja koskevien käyttöehtojen](https://www.posti.fi/fi/asiakastuki/postinumerotiedostot) noudattamista. Voit tutustua [postinumeroaineiston palvelukuvaukseen ja käyttöehtoihin postin sivuilla](https://www.posti.fi/mzj3zpe8qb7p/1eKbwM2WAEY5AuGi5TrSZ7/33cfc2c66d2649af885b36e3935556a1/posti-postinumeropalvelut-palvelukuvaus-ja-kayttoehdot-20150101.pdf).
 
 > _"Tietoja voi luovuttaa edelleen, mutta aineistoja luovutettaessa on huolehdittava siitä, että luovutuksensaajalla on tieto palvelun käyttöehdoista sekä tietojen latauspäivämäärästä."_
 >
 > Postinumero­tiedostot. https://www.posti.fi/fi/asiakastuki/postinumerotiedostot
+
+## Node.js:n lisenssi
+
+> _"Node.js is available under the [MIT license](https://opensource.org/licenses/MIT). Node.js also includes external libraries that are available under a variety of licenses. See [LICENSE](https://github.com/nodejs/node/blob/HEAD/LICENSE) for the full license text."_
+>
+> https://github.com/nodejs/node#license
+
+## TypeScriptin lisenssi
+
+TypeScript itsessään on lisensoitu Apache-2.0 -lisenssillä: ttps://github.com/microsoft/TypeScript/blob/main/LICENSE.txt
+
+## Ts-node:n lisenssi
+
+> _ts-node is licensed under the MIT license. [MIT](https://github.com/TypeStrong/ts-node/blob/main/LICENSE)_
+>
+> _ts-node includes source code from Node.js which is licensed under the MIT license. [Node.js license information](https://raw.githubusercontent.com/nodejs/node/master/LICENSE)_
+>
+> _ts-node includes source code from the TypeScript compiler which is licensed under the Apache License 2.0. [TypeScript license information](https://github.com/microsoft/TypeScript/blob/master/LICENSE.txt)_
+>
+> https://github.com/TypeStrong/ts-node/#license
 
 ## Tämä oppimateriaali
 
