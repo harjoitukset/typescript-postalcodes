@@ -11,11 +11,11 @@
       "points": 20
     },
     {
-      "name": "1.2 Postitoimipaikka 00730",
+      "name": "1.2 Postitoimipaikka 99999",
       "setup": "npm install",
-      "run": "npm start 00730 | tr '[:upper:]' '[:lower:]'",
+      "run": "npm start 99999 | tr '[:upper:]' '[:lower:]'",
       "input": "",
-      "output": "helsinki",
+      "output": "korvatunturi",
       "comparison": "included",
       "timeout": 1,
       "points": 20
