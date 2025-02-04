@@ -195,7 +195,7 @@ Tehtävän postinumeroaineiston käyttäminen edellytää [Postin postiumerotied
 
 ## TypeScriptin lisenssi
 
-TypeScript itsessään on lisensoitu Apache-2.0 -lisenssillä: ttps://github.com/microsoft/TypeScript/blob/main/LICENSE.txt
+TypeScript itsessään on lisensoitu Apache-2.0 -lisenssillä: https://github.com/microsoft/TypeScript/blob/main/LICENSE.txt
 
 ## Ts-node:n lisenssi
 
