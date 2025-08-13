@@ -52,10 +52,10 @@
     },
     {
       "name": "3.1 Npm script - koodin kääntäminen",
-      "setup": "npm install",
-      "run": "npm run build",
+      "setup": "npm run build",
+      "run": "node build/postalcodes.js 19230 | tr '[:upper:]' '[:lower:]'",
       "input": "",
-      "output": "",
+      "output": "onkiniemi",
       "comparison": "included",
       "timeout": 1,
       "points": 20
