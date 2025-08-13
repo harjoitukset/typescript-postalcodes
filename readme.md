@@ -1,6 +1,8 @@
 # TypeScript & postinumerot
 
-Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmille tehtäville, joissa käsittelemme dataa ja testaamme ohjelmistoja [TypeScript-kielellä](https://www.typescriptlang.org/). Kaikkien kielen ominaisuuksien opetteleminen etukäteen ei ole tarkoituksenmukaista, joten tässä tehtävässä tutustutaan tarvittaviin työkaluihin sekä perusrakenteisiin. Tehtävässä voi olla hyötyä esim. omista funktioista ja omien tietotyyppien määrittelemisestä, mutta ne eivät ole välttämättömiä.
+Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmille tehtäville, joissa käsittelemme dataa ja testaamme ohjelmistoja [TypeScript-kielellä](https://www.typescriptlang.org/). Kaikkien kielen ominaisuuksien opetteleminen etukäteen ei ole tarkoituksenmukaista, joten tässä tehtävässä tutustutaan tarvittaviin työkaluihin sekä perusrakenteisiin.
+
+Tehtävässä voi olla hyötyä esim. omista funktioista ja omien tietotyyppien määrittelemisestä, mutta ne eivät ole välttämättömiä.
 
 > [!NOTE]
 > Node.js ei **vielä** tue TypeScriptiä suoraan oletusasetuksilla, mutta tulevissa versioissa odotetaan mahdollisuutta ajaa TypeScriptiä ilman erillistä käännösvaihetta tai kokeellisia ominaisuuksia. Tämän tehtävän ohjeissa käytetään siksi `ts-node`-työkalua, jonka avulla Node.js voi suorittaa TypeScript-koodia helposti. Vaihtoehtoisia työkaluja, kuten [tsx](https://tsx.is/) [Deno](https://deno.com/) ja [Bun](https://bun.sh/), on myös olemassa, ja ne tukevat TypeScriptiä suoraan.
@@ -167,7 +169,7 @@ node build/postalcodes.js 00100
 node build/postalcodes.js porvoo
 ```
 
-Käännetyt tiedostot tallentuvat `build`-hakemistoon, koska se on määritetty `tsconfig.json`-tiedostossa `outDir`-hakemistoksi. 
+Käännetyt tiedostot tallentuvat `build`-hakemistoon, koska se on määritetty `tsconfig.json`-tiedostossa `outDir`-hakemistoksi.
 
 ## Vinkkejä
 
@@ -203,7 +205,7 @@ let output = codes.join(", ");
 console.log(output);
 ```
 
-### Interface
+### Oman tyypin määrittely
 
 Mikäli haluat hyödyntää ohjelmassasi TypeScriptin tyyppimäärittelyjä, voit määritellä postinumerotietuetta varten esimerkiksi seuraavanlaisen `interface`:n:
 
