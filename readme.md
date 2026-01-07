@@ -4,37 +4,112 @@ Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmi
 
 Tehtävässä voi olla hyötyä esim. omista funktioista ja omien tietotyyppien määrittelemisestä, mutta ne eivät ole välttämättömiä.
 
-> [!NOTE]
-> Node.js ei **vielä** tue TypeScriptiä suoraan oletusasetuksilla, mutta tulevissa versioissa odotetaan mahdollisuutta ajaa TypeScriptiä ilman erillistä käännösvaihetta tai kokeellisia ominaisuuksia. Tämän tehtävän ohjeissa käytetään siksi `ts-node`-työkalua, jonka avulla Node.js voi suorittaa TypeScript-koodia helposti. Vaihtoehtoisia työkaluja, kuten [tsx](https://tsx.is/) [Deno](https://deno.com/) ja [Bun](https://bun.sh/), on myös olemassa, ja ne tukevat TypeScriptiä suoraan.
-
 
 ## GitHub actions
 
 Tehtävä testataan käyttäen [GitHub actions](https://github.com/features/actions) -palvelua, joka suorittaa testaa ohjelmasi automaattisesti, kun päivität lähdekoodisi GitHubiin. Kun GitHub Actions on saanut koodisi suoritettua, näet tuloksen GitHub-repositoriosi [Actions-välilehdellä](../../actions/workflows/classroom.yml). Arvioinnin valmistumiseen menee tyypillisesti noin pari minuuttia.
 
-Tehtävien toimintalogiikan ja tekstikäyttöliittymän ei tarvitse noudattaa pilkulleen annettuja esimerkkejä, mutta niiden tulee olla oleellisilta osin samanlaiset. Automaattisen testauksen vuoksi ohjelmasi tulee toimia samoilla komennoilla ja syötteillä kuin esimerkit.
+Tehtävien toimintalogiikan ja tekstikäyttöliittymän ei tarvitse noudattaa pilkulleen annettuja esimerkkejä, mutta niiden tulee olla oleellisilta osin samanlaiset. Automaattisen testauksen vuoksi ohjelmasi tulee toimia samoilla komennoilla ja syötteillä kuin esimerkit ja tulosteiden täytyy olla samankaltaiset.
 
 
-## Riippuvuuksien asentaminen ja ohjelman suoritus
+## Riippuvuuksien asentaminen
 
 Tehtävän suorittamiseksi tarvitset [Node.js-suoritusympäristön](https://nodejs.org/) sekä npm-pakettienhallintasovelluksen, joka tulee tyypillisesti Node.js-asennuksissa mukana. Suosittelemme käyttämään tehtävissä [uusinta LTS-versiota (Long Term Support)](https://github.com/nodejs/release#release-schedule).
 
-Tehtävässä käytetään [npm-rekisteristä](https://www.npmjs.com/) löytyviä [`typescript`-](https://www.npmjs.com/package/typescript) sekä [`ts-node`-paketteja](https://www.npmjs.com/package/ts-node). Nämä paketit on valmiiksi määritettynä tämän tehtäväpohjan [package.json](./package.json)-tiedostossa, joten niiden asentamiseksi sinun tarvitsee vain ajaa komento `npm install` tehtävän päähakemistossa:
+Tehtävässä käytetään [npm-rekisteristä](https://www.npmjs.com/) löytyviä [`typescript`-](https://www.npmjs.com/package/typescript) sekä [`@types/node`-paketteja](https://www.npmjs.com/package/@types/node). Nämä paketit on valmiiksi määritettynä tämän tehtäväpohjan [package.json](./package.json)-tiedostossa, joten niiden asentamiseksi sinun tarvitsee vain ajaa komento `npm install` tehtävän päähakemistossa:
 
-```
+```sh
 npm install
 ```
 
-Kun edellä mainitut paketit on asennettu, suosittelemme kokeilemaan asennuksen onnistumista seuraavasti esim. seuraavasti:
+Sekä `typescript`- että `@types/node`-paketit tarvitaan vain kehitysvaiheessa, joten ne on määritetty `devDependencies`-osioon `package.json`-tiedostossa. Mikäli sovelluksesta tehdään julkaistava tuotantoversio, koodi voidaan kääntää JavaScriptiksi ja sovellusta voidaan suorittaa ilman näitä paketteja.
+
+
+## Ohjelman suorittaminen
+
+Kun riippuvuudet on asennettu, voit kokeilla skriptin suorittamista `node`-komennolla esim. seuraavasti:
 
 ```sh
-npx ts-node src/postalcodes.ts 00100
+# etsitään postitoimipaikka postinumerolla 00100
+node src/postalcodes.ts 00100
+
+# etsitään postinumerot postitoimipaikalla porvoo
+node src/postalcodes.ts porvoo
 ```
+
+Tulosteiden pitäisi aluksi näyttää muutama ensimmäinen rivi postinumeroaineistosta sekä komentoriviparametrit taulukkona, ja tätä toimintalogiikkaa on tarkoitus muokata tehtävän seuraavissa osissa.
+
+
+## "Full TypeScript support"
+
+Node.js:n uusimmat versiot tukevat TypeScript-koodin suorittamista suoraan, mutta tietyillä rajoituksilla. Esimerkiksi `tsconfig.json`-tiedoston asetuksia ei tueta ja oletuksena koodissa saa olla vain sellaisia ominaisuuksia, jotka voidaan yksinkertaisesti poistaa:
+
+> *"By default Node.js will execute TypeScript files that contains only erasable TypeScript syntax. Node.js will replace TypeScript syntax with whitespace, and no type checking is performed."*
+>
+> https://nodejs.org/docs/v24.12.0/api/typescript.html#type-stripping
+
+Node.js:n dokumentaation artikkeli [Running TypeScript Natively](https://nodejs.org/en/learn/typescript/run-natively) tarjoaa lisätietoja TypeScript-koodin suorittamisesta Node.js:ssä. Käytännössä edistyneemmän TypeScript-koodin suorittamiseksi on kaksi lähestymistapaa: joko kääntää koodi JavaScriptiksi etukäteen TypeScript-kääntäjällä (ahead-of-time) tai käyttää työkaluja, jotka kääntävät TypeScriptiä samalla kun sitä suoritetaan (just-in-time).
+
+## TypeScript-kääntäjä eli `tsc` (TypeScript compiler)
+
+**Tsc** on TypeScript-kääntäjä, joka tarkastaa TypeScript-lähdekoodisi virheiden varalta sekä kääntää koodisi standardin mukaiseksi JavaScriptiksi. Kun siis haluat kääntää kirjoittamasi ohjelman TypeScript-kielestä JavaScriptiksi, onnistuu se `npx`- ja `tsc`-komennoilla:
+
+```sh
+npx tsc
+```
+
+Yllä esiintyvä `npx` on komento, joka suorittaa npm-paketteja ilman, että niitä tarvitsee asentaa globaalisti. Tässä tapauksessa `npx tsc`-yhdistelmä saa aikaan sen, että TypeScript-paketista löytyvä `tsc`-kääntäjä käynnistetään.
+
+> _"\[npx\] command allows you to run an arbitrary command from an npm package (either one installed locally, or fetched remotely), in a similar context as running it via `npm run`._"
+>
+> https://docs.npmjs.com/cli/v10/commands/npx
+
+Jos kääntäminen onnistuu, syntyy `build`-hakemistoon JavaScript-tiedostot, jotka voidaan suorittaa Node.js:llä tai muissa JavaScript-ympäristöissä:
+
+```sh
+node build/postalcodes.js 00100
+```
+
+Tässä vaiheessa käännetty JavaScript-koodi näyttää melko samalta kuin alkuperäinen TypeScript-koodi, mutta laajemmissa projekteissa erot nousevat selkeämmin esiin.
+
+
+## TypeScript Execute eli `tsx`
+
+Vaihtoehtoisesti, jos haluat suorittaa edistynyttä TypeScript-koodia ilman etukäteiskääntämistä, voit käyttää [`tsx`-työkalua](https://tsx.is/), joka kääntää TypeScriptiä automaattisesti taustalla. Asenna `tsx`-paketti ensin projektin kehitysriippuvuuksiin:
+
+```sh
+npm install tsx --save-dev
+```
+
+Tämän jälkeen voit suorittaa TypeScript-skriptin `npx`:n ja `tsx`-komennon avulla:
+
+```sh
+npx tsx src/postalcodes.ts 00100
+```
+
+Node.js:n sisäänrakennettuun TypeScript-tukeen verrattuna `tsx`-työkalu tarjoaa tuen kaikille TypeScriptin ominaisuuksille, joten se soveltuu myös monimutkaisempien TypeScript-projektien suorittamiseen ilman etukäteiskääntämistä. Lisäksi se hyödyntää `tsconfig.json`-tiedostossa määritettyjä asetuksia.
+
+Node.js:n TypeScript-ekosysteemissä on myös muita tapoja suorittaa koodia, esimerkiksi [`ts-node`-työkalu](https://www.npmjs.com/package/ts-node), jonka kehitys vaikuttaa tosin olevan hiipumassa.
 
 
 ## Tehtäväpohja [./src/postalcodes.ts](./src/postalcodes.ts)
 
-[Tehtäväpohjassa](./src/postalcodes.ts) on valmiiksi kirjoitettuna esimerkit tekstitiedostojen lukemiseen ja komentoriviparametrien käsittelyyn. Kun suoritat komennon `npx ts-node src/postalcodes.ts 00100`, tulosteen pitäisi näyttää seuraavalta:
+[Tehtäväpohjassa](./src/postalcodes.ts) on valmiiksi kirjoitettuna esimerkit tekstitiedostojen lukemiseen ja komentoriviparametrien käsittelyyn. Kuten edellä on mainittu, koodi voidaan suorittaa eri tavoin, esimerkiksi seuraavasti:
+
+```sh
+# suoritetaan suoraan Node.js:llä (rajoitettu TypeScript-tuki):
+node src/postalcodes.ts 00100
+
+# suoritetaan TypeScript-koodi suoraan tsx-työkalulla (edellyttää asennusta):
+npx tsx src/postalcodes.ts 00100
+
+# käännetään TypeScript-koodi JavaScriptiksi tsc-komennolla ja
+# suoritetaan käännetty JavaScript-koodi Node.js:llä:
+npx tsc
+node build/postalcodes.js 00100
+```
+
+Suoritustavasta riippumatta tehtäväpohjan koodin tulosteen pitäisi olla seuraavanlainen:
 
 ```
 The first 5 lines read from CSV file:
@@ -47,56 +122,7 @@ The first 5 lines read from CSV file:
 ...
 ```
 
-Yllä käytetty komento skriptin suorittamiseksi koostuu muutamista osista, joista voit lukea lisää niiden alkuperäisistä lähteistä:
-
-
-### Npx
-
-**Npx** on komento, joka suorittaa npm-paketteja ilman, että niitä tarvitsee asentaa globaalisti. Tässä tapauksessa `npx ts-node`-yhdistelmä saa aikaan sen, että `npm_modules`-hakemistoon asennettu `ts-node`-työkalu käynnistetään.
-
-> _"\[npx\] command allows you to run an arbitrary command from an npm package (either one installed locally, or fetched remotely), in a similar context as running it via `npm run`._"
->
-> https://docs.npmjs.com/cli/v10/commands/npx
-
-
-### Ts-node
-
-**Ts-node** on työkalu, joka mahdollistaa TypeScript-koodin suorittamisen suoraan Node.js-ympäristössä, kääntäen sen JavaScriptiksi taustalla reaaliaikaisesti.
-
-> _"`ts-node is` a TypeScript execution engine and REPL for Node.js._
->
-> _It JIT<sup>1</sup> transforms TypeScript into JavaScript, enabling you to directly execute TypeScript on Node.js without precompiling. This is accomplished by hooking node's module loading APIs, enabling it to be used seamlessly alongside other Node.js tools and libraries."_
->
-> https://typestrong.org/ts-node/docs/
-
-<sup>1</sup> JIT-muunnos (Just-In-Time transform) viittaa ohjelmakoodin kääntämiseen ajon aikana sen sijaan, että se tehtäisiin etukäteen.
-
-
-### Tsc (TypeScript compiler)
-
-**Tsc** on TypeScript-kääntäjä, joka tarkastaa TypeScript-lähdekoodisi virheiden varalta sekä koodisi standardin mukaiseksi JavaScriptiksi. Kun siis haluat kääntää kirjoittamasi ohjelman TypeScript-kielestä JavaScriptiksi, onnistuu se `npx`- ja `tsc`-komennoilla:
-
-```
-npx tsc
-```
-
-`tsc`-komento kääntää kirjoittamasi TypeScript-tiedostot JavaScript-tiedostoiksi `build`-hakemistoon, josta ne voidaan suorittaa Node.js:llä esimerkiksi euraavasti:
-
-```
-node build/postalcodes.js 00100
-```
-
-**Huom!** Ohjelmasi ei saa sisältää käännösvirheitä, tai kääntäminen ei onnistu. Voit halutessasi vain tarkastaa koodisi mahdollisten virheiden varalta komennolla [tsc --noEmit](https://www.typescriptlang.org/tsconfig#noEmit):
-
-```
-npx tsc --noEmit
-```
-
-Jos yllä oleva komento ei tulosta mitään, kaikki on kunnossa. `--noEmit` tarkoittaa, että käännettyjä tiedostoja ei tallenneta `build`-hakemistoon.
-
-> _"Do not emit compiler output files like JavaScript source code, source-maps or declarations. This makes room for another tool like Babel, or swc to handle converting the TypeScript file to a file which can run inside a JavaScript environment."_
->
-> No Emit - noEmit. https://www.typescriptlang.org/tsconfig#noEmit
+Jos komentoriviparametreja on annettu, ne tulostetaan myös taulukkona. Näiden tulosteiden on tarkoitus auttaa sinua alkuun pääsemisessä ja voit muokata koodin kaikkia osia tarpeidesi mukaan.
 
 
 ## Postinumeroaineisto
@@ -115,7 +141,7 @@ Tiedostossa kukin postinumero ja siihen liittyvä nimi esiintyvät omalla rivill
 ...
 ```
 
-Huomaa, että sama nimi voi esiintyä tiedostossa monen eri postinumeron kohdalla. Postinumerot puolestaan ovat uniikkeja ja esiintyvät aineistossa vain kerran. Numerot ja nimet ovat tiedostossa sekalaisessa järjestyksessä.
+Huomaa, että sama toimipaikan nimi voi esiintyä tiedostossa monen eri postinumeron kohdalla. Postinumerot puolestaan ovat uniikkeja ja esiintyvät aineistossa vain kerran. Numerot ja nimet ovat tiedostossa sekalaisessa järjestyksessä.
 
 
 ## Osa 1: Postitoimipaikka (40 %)
@@ -127,7 +153,10 @@ Tehtävän ratkaisemiseksi ohjelmasi tulee etsiä csv-muotoisesta postinumeroain
 Esimerkkisuoritus:
 
 ```sh
-npx ts-node src/postalcodes.ts 00100
+# komento:
+$ node src/postalcodes.ts 00100
+
+# ohjelman tuloste:
 Helsinki
 ```
 
@@ -138,14 +167,17 @@ Huolehdi ratkaisussasi siitä, että tuntemattoman postinumeron syöttäminen ta
 
 ## Osa 2: Postinumerot (40 %)
 
-Muokkaa ohjelmaasi siten, että käyttäjä voi antaa komentoriviparametrina postinumeron sijasta myös nimen. Ohjelmasi tulee tällöin listata kaikki kyseiseen nimeen liittyvät postinumerot samalla rivillä **kasvavassa järjestyksessä**.
+Muokkaa tässä osassa ohjelmaasi siten, että käyttäjä voi antaa komentoriviparametrina postinumeron sijasta myös postitoimipaikan nimen. Ohjelmasi tulee tässä tapauksessa listata kaikki kyseiseen nimeen liittyvät postinumerot yhdellä rivillä **kasvavassa järjestyksessä**.
 
 Tehtävän voi ratkaista useilla tavoilla, joten käytä hetki ongelman pohtimiseen ennen kuin ryhdyt koodaamaan. Olisiko esimerkiksi helpompaa jäsentää postinumeroaineisto etukäteen uudenlaiseksi tietorakenteeksi?
 
 Esimerkkisuoritus:
 
 ```sh
-npx ts-node src/postalcodes.ts porvoo
+# komento (listaa Porvoon postinumerot):
+$ node src/postalcodes.ts porvoo
+
+# tulostaa Porvoon postinumerot kasvavassa järjestyksessä:
 06100, 06101, 06150, 06151, 06200, 06400, 06401, 06450, 06500
 ```
 
@@ -156,7 +188,7 @@ Toteuta ohjelmasi siten, että syötetyn postitoimipaikan **kirjainkoolla ei ole
 
 Npm:n ja [package.json](./package.json)-tiedoston avulla voidaan määritellä [projektikohtaisia komentoja](https://docs.npmjs.com/cli/using-npm/scripts), jotka esimerkiksi suorittavat testejä tai kääntävät TypeScript-koodia JavaScriptiksi.
 
-Lisää `package.json`-tiedoston `scripts`-lohkoon uusi komento nimeltä "build". Tämän komennon tulee kääntää TypeScript-tiedostot JavaScriptiksi käyttäen `tsc`-komentoa.
+Lisää `package.json`-tiedostoon uusi `scripts`-lohko ja lohkoon uusi komento nimeltä `build`. Tämän komennon tulee kääntää TypeScript-tiedostot JavaScriptiksi käyttäen `tsc`-komentoa.
 
 Tämän jälkeen voit kääntää koodin ja suorittaa sen esimerkiksi seuraavilla komennoilla:
 
@@ -164,12 +196,13 @@ Tämän jälkeen voit kääntää koodin ja suorittaa sen esimerkiksi seuraavill
 # kääntää TypeScript-koodin JavaScriptiksi build-hakemistoon
 npm run build
 
-# Käännetty koodi voidaan suorittaa Node.js:llä ilman TypeScript-tukea
+# käännetty koodi voidaan nyt suorittaa tavallisena JavaScriptinä:
 node build/postalcodes.js 00100
 node build/postalcodes.js porvoo
 ```
 
-Käännetyt tiedostot tallentuvat `build`-hakemistoon, koska se on määritetty `tsconfig.json`-tiedostossa `outDir`-hakemistoksi.
+👆 *Käännetyt tiedostot tallentuvat `build`-hakemistoon, koska se on määritetty `tsconfig.json`-tiedostossa `outDir`-hakemistoksi.*
+
 
 ## Vinkkejä
 
@@ -207,7 +240,7 @@ console.log(output);
 
 ### Oman tyypin määrittely
 
-Mikäli haluat hyödyntää ohjelmassasi TypeScriptin tyyppimäärittelyjä, voit määritellä postinumerotietuetta varten esimerkiksi seuraavanlaisen `interface`:n:
+Mikäli haluat hyödyntää ohjelmassasi TypeScriptin tyyppimäärittelyjä, voit määritellä postinumerotietuetta varten esimerkiksi seuraavanlaisen `type`:n:
 
 ```ts
 // Katso lisää: https://www.typescriptlang.org/docs/handbook/2/objects.html
@@ -237,18 +270,12 @@ Tehtävän postinumeroaineiston käyttäminen edellytää [Postin postiumerotied
 
 TypeScript itsessään on lisensoitu Apache-2.0 -lisenssillä: https://github.com/microsoft/TypeScript/blob/main/LICENSE.txt
 
-### Ts-node
+### Tsx
 
-> _ts-node is licensed under the MIT license. [MIT](https://github.com/TypeStrong/ts-node/blob/main/LICENSE)_
->
-> _ts-node includes source code from Node.js which is licensed under the MIT license. [Node.js license information](https://raw.githubusercontent.com/nodejs/node/master/LICENSE)_
->
-> _ts-node includes source code from the TypeScript compiler which is licensed under the Apache License 2.0. [TypeScript license information](https://github.com/microsoft/TypeScript/blob/master/LICENSE.txt)_
->
-> https://github.com/TypeStrong/ts-node/#license
+Tsx-työkalu on lisensoitu MIT-lisenssillä: https://github.com/privatenumber/tsx/blob/master/LICENSE
 
 ### Tämä oppimateriaali
 
 Tämän tehtävän on kehittänyt Teemu Havulinna ja se on lisensoitu [Creative Commons BY-NC-SA -lisenssillä](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-Tehtävänannon, lähdekoodien ja testien toteutuksessa on hyödynnetty ChatGPT-kielimallia sekä GitHub copilot -tekoälyavustinta.
+Tehtävänannon, lähdekoodien ja testien toteutuksessa on hyödynnetty ChatGPT- sekä GitHub copilot -tekoälytyökaluja.

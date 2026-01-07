@@ -1,12 +1,12 @@
 /* Visit https://aka.ms/tsconfig to read more about this file */
 {
     "compilerOptions": {
-        "target": "es2016", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-        "module": "CommonJS",
+        "target": "es2022", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+        "module": "nodenext", /* Specify what module code is generated. */
         "rootDir": "src", /* Specify the root folder within your source files. */
         "outDir": "./build/", /* Specify an output folder for all emitted files. */
         "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
         "strict": true, /* Enable all strict type-checking options. */
-        "moduleResolution": "node", /* see https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution */
+        "moduleResolution": "nodenext", /* see https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution */
     }
 }
