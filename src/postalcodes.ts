@@ -2,11 +2,9 @@
 import { readFileSync } from 'fs';
 
 /*
- * The `URL` class helps us construct a relative path to the CSV file containing postal
- * codes in CSV format. `readFileSync` then reads the contents of the file as a string:
+ * Read the contents of the CSV file into a string:
  */
-const csvFile = new URL('../postalcodes.csv', import.meta.url);
-let fileContents: string = readFileSync(csvFile, 'utf-8').trim();
+let fileContents: string = readFileSync('postalcodes.csv', 'utf-8').trim();
 
 
 /*
