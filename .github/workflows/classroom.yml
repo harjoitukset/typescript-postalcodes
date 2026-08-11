@@ -13,6 +13,8 @@ jobs:
   build:
     name: Autograding
     runs-on: ubuntu-latest
+    if: (github.event_name != 'push' || github.event.head_commit.message != 'Initial commit')
+
     steps:
       - uses: actions/checkout@v6
 
@@ -27,4 +29,3 @@ jobs:
         run: npm install tsx --save-dev
 
       - uses: education/autograding@v1
-        if: (github.event_name != 'push' || github.event.head_commit.message != 'Initial commit')
