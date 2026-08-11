@@ -4,7 +4,7 @@ Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmi
 
 Tehtävän suorittamiseksi tarvitset [Node.js-suoritusympäristön](https://nodejs.org/) sekä npm-pakettienhallintasovelluksen, joka tulee tyypillisesti Node.js-asennuksissa mukana. Suosittelemme käyttämään tehtävissä [uusinta LTS-versiota (Long Term Support)](https://github.com/nodejs/release#release-schedule).
 
-> ![TIP]
+> [!TIP]
 > Suosittelemme ratkaisemaan tämän tehtävän kehityskontissa, joka tarjoaa valmiiksi määritetyn ympäristön, jossa Node.js ja npm ovat asennettuina. Kehityskontti eristää projektin muusta käyttöjärjestelmästä, joten sillä voi olla myös positiivisia tietoturvavaikutuksia. Katso lisätietoja [kehityskontin readme.md-tiedostosta](./.devcontainer/readme.md).
 
 
@@ -137,7 +137,7 @@ node build/postalcodes.js 00100
 node build/postalcodes.js helsinki
 ```
 
-> ![NOTE]
+> [!NOTE]
 > TypeScript-kääntäjä lukee kääntämiseen liittyvät asetukset [`tsconfig.json`-tiedostosta](./tsconfig.json), joka on luotu valmiiksi mukana projektin juurihakemistossa. Siellä on määritettynä myös `outDir`- ja `rootDir`-asetukset, jotka kertovat kääntäjälle, että käännetyt JavaScript-tiedostot luodaan `build`-hakemistoon ja TypeScript-lähdekoodit löytyvät `src`-hakemistosta.
 >
 > Tässä tehtävässä sinun ei tarvitse tehdä muutoksia `tsconfig.json`-tiedostoon, mutta voit tutustua sen sisältöön ja asetuksiin, jotta ymmärrät miten TypeScript-kääntäjä toimii. Voit lukea lisää TypeScriptin asetuksista [TypeScriptin dokumentaatiosta](https://www.typescriptlang.org/tsconfig).
@@ -277,7 +277,7 @@ Tehtävän ratkaisemiseksi ohjelmasi tulee etsiä csv-muotoisesta postinumeroain
 
 Huolehdi ratkaisussasi siitä, että tuntemattoman postinumeron syöttäminen tai postinumeron syöttämättä jättäminen eivät kaada ohjelmaasi. Voit näissä tapauksissa joko tulostaa vapaamuotoisen virheilmoituksen tai jättää tulosteet kokonaan tekemättä.
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > Tehtävien toimintalogiikan ja tekstikäyttöliittymän ei tarvitse noudattaa pilkulleen annettuja esimerkkejä, mutta niiden tulee olla oleellisilta osin samanlaiset. Automaattisen testauksen vuoksi ohjelmasi tulee toimia samoilla komennoilla ja syötteillä kuin esimerkit ja tulosteiden täytyy olla samankaltaiset.
 
 
