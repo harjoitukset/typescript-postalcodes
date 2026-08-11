@@ -75,7 +75,7 @@ Tässä vaiheessa käännetty JavaScript-koodi näyttää melko samalta kuin alk
 
 ## TypeScript Execute eli `tsx`
 
-Vaihtoehtoisesti, jos haluat suorittaa edistynyttä TypeScript-koodia ilman etukäteiskääntämistä, voit käyttää [`tsx`-työkalua](https://tsx.is/), joka kääntää TypeScriptiä automaattisesti taustalla. Asenna `tsx`-paketti ensin projektin kehitysriippuvuuksiin:
+Vaihtoehtoisesti, jos haluat suorittaa edistynyttä TypeScript-koodia ilman etukäteiskääntämistä, voit käyttää [`tsx`-työkalua](https://github.com/privatenumber/tsx), joka kääntää TypeScriptiä automaattisesti taustalla. Asenna `tsx`-paketti ensin projektin kehitysriippuvuuksiin:
 
 ```sh
 npm install tsx --save-dev
