@@ -203,7 +203,12 @@ Node.js:n TypeScript-ekosysteemissä on myös muita tapoja suorittaa koodia, esi
 
 ## Koodaustehtävä [./src/postalcodes.ts](./src/postalcodes.ts)
 
-Kun projekti on valmisteltu, seuraa varsinainen koodaustehtävä, jossa valmista TypeScript-koodia jatkokehitetään siten, että se pystyy etsimään postitoimipaikan nimen postinumeron perusteella sekä etsimään kaikki postinumerot tietyn postitoimipaikan nimen perusteella. Voit halutessasi muokata koodia myös muilla tavoin, mutta tehtävän automaattisen testauksen vuoksi ohjelmasi tulee toimia samoilla komennoilla ja syötteillä kuin esimerkit ja tulosteiden täytyy olla samankaltaiset.
+Kun projekti on valmisteltu, seuraa varsinainen koodaustehtävä, jossa annettua TypeScript-koodia jatkokehitetään siten, että se pystyy etsimään postitoimipaikan nimen postinumeron perusteella sekä etsimään kaikki postinumerot tietyn postitoimipaikan nimen perusteella. Voit halutessasi muokata koodia myös muilla tavoin, mutta tehtävän automaattisen testauksen vuoksi ohjelmasi tulee toimia samoilla komennoilla ja syötteillä kuin esimerkit ja tulosteiden täytyy olla samankaltaiset.
+
+Tehtävän ratkaisemiseksi ei tarvita erityistä osaamista TypeScriptistä, vaan JavaScriptin perusteiden hallinta riittää.
+
+
+### Tiedoston lukeminen ja komentoriviparametrit
 
 [Tehtäväpohjassa](./src/postalcodes.ts) on valmiiksi kirjoitettuna esimerkit tekstitiedostojen lukemiseen ja komentoriviparametrien tutkimiseen. Hyödynnä aikaisempien osioiden esimerkkejä ja suorita ohjelmasi. Suoritustavasta riippumatta tehtäväpohjan koodin tulosteen pitäisi olla seuraavanlainen:
 
@@ -230,7 +235,7 @@ node build/postalcodes.js 00100
 # kaksi parametria:
 node build/postalcodes.js Napapiiri Rovaniemi
 
-# yksi parametri, jossa on välilyöntejä:
+# yksi parametri, jossa on välilyönti:
 node build/postalcodes.js "Napapiiri Rovaniemi"
 ```
 
