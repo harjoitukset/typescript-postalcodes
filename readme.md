@@ -242,7 +242,7 @@ node build/postalcodes.js "Napapiiri Rovaniemi"
 
 ### Postinumeroaineisto
 
-Tässä tehtävässä hyödynnetään CSV-muotoon tallennettua postinumeroaineistoa, joka löytyy tiedostosta [postalcodes.csv](./postalcodes.csv). Aineisto on muodostettu [Postin postiumerotiedostojen](https://www.posti.fi/fi/asiakastuki/postinumerotiedostot) pohjalta 5.1.2023.
+Tässä tehtävässä hyödynnetään CSV-muotoon tallennettua postinumeroaineistoa, joka löytyy tiedostosta [postalcodes.csv](./postalcodes.csv). Aineisto on muodostettu [Postin postinumerotiedostojen](https://www.posti.fi/fi/asiakastuki/postinumerotiedostot) pohjalta 5.1.2023.
 
 Tiedostossa kukin postinumero ja siihen liittyvä nimi esiintyvät omalla rivillään, esimerkiksi seuraavasti:
 
