@@ -82,7 +82,7 @@ Kyseinen rivi estää npm-pakettien asennuksen yhteydessä mahdollisesti suorite
 Tapauksissa, joissa tunnettuun pakettiin on päätynyt syystä tai toisesta haavoittuva versio, ongelma havaitaan usein nopeasti ja ongelmaan julkaistaan korjaus. Tämän vuoksi [on suositeltavaa estää uusien pakettiversioiden asentaminen heti niiden julkaisun jälkeen](https://daniakash.com/posts/simplest-supply-chain-defense/), jolloin mahdolliset haavoittuvuudet voidaan havaita ja korjata. Tämä voidaan tehdä lisäämällä `.npmrc`-tiedostoon seuraava rivi:
 
 ```sh
-minimum-release-age=7
+min-release-age=7
 ```
 
 Kyseinen rivi asentaa vain vähintään 7 päivää vanhoja pakettiversioita, jolloin mahdolliset haavoittuvuudet voidaan havaita ja korjata ennen kuin ne päätyvät asennettavaksi. Voit halutessasi määritellä myös toisen arvon kuin 7 päivää.
