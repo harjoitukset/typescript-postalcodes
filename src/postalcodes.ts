@@ -4,14 +4,14 @@ import { readFileSync } from 'fs';
 /*
  * Read the contents of the CSV file into a string:
  */
-let fileContents: string = readFileSync('postalcodes.csv', 'utf-8').trim();
+const fileContents: string = readFileSync('postalcodes.csv', 'utf-8').trim();
 
 
 /*
  * Each postal code is on a separate line in the CSV file. We can split the contents of the
  * file into an array of lines using the `split` method:
  */
-let lines: string[] = fileContents.split('\n');
+const lines: string[] = fileContents.split('\n');
 
 
 /*
@@ -31,7 +31,7 @@ console.table(lines.slice(0, 5));
  * Try to give some extra arguments when running the script, and you should see them in the
  * table output.
  */
-let params: string[] = process.argv;
+const params: string[] = process.argv;
 
 console.log('The contents of the `process.argv` array:');
 console.table(params);
