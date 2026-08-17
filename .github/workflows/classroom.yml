@@ -24,5 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        timeout-minutes: 1
 
       - uses: education/autograding@v1
+        timeout-minutes: 1
