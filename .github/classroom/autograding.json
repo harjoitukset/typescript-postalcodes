@@ -33,7 +33,7 @@
     {
       "name": "Projektin kääntäminen",
       "setup": "rm -rf build",
-      "run": "npx tsc ; ls build",
+      "run": "npx tsc && ls build",
       "input": "",
       "output": "postalcodes.js",
       "comparison": "included",
@@ -53,7 +53,7 @@
     {
       "name": "Omat npm-skriptit",
       "setup": "rm -rf build",
-      "run": "npm run build ; ls build",
+      "run": "npm run build && ls build",
       "input": "",
       "output": "postalcodes.js",
       "comparison": "included",
