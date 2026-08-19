@@ -26,7 +26,7 @@ Jos Dockerin asentaminen paikallisesti ei ole hyvä vaihtoehto, voit myös käyt
 Voit avata projektin GitHub Codespacesissa noudattamalla [tätä ohjetta](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository). Kun olet avannut repositorion GitHubin verkkokäyttöliittymässä, voit luoda uuden codespacen napsauttamalla "Code"-painiketta repositorion etusivulla ja valitsemalla "Open with Codespaces". Tämä luo codespacen, joka käyttää samaa kehityskontin määritystä, joten saat käyttöön samat työkalut ja riippuvuudet kuin paikallisessa kontissa. Tämä voi olla kätevä vaihtoehto, jos haluat välttää Dockerin asentamisen tai työskennellä eri koneilla ilman ympäristön toistuvaa konfigurointia.
 
 
->![NOTE]
+> [!NOTE]
 > Pilvipohjaiset kehitysympäristöt ovat kaupallisia palveluita ja saattavat vaatia maksullisen tilauksen. Tarkista valitsemasi palvelun hinnoittelutiedot. Kirjoitushetkellä GitHub Codespaces tarjoaa ilmaisen tason, jossa on rajoitettu käyttöaika kuukaudessa, ja tarvittaessa lisäaikaa voidaan ostaa (katso [docs.github.com](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces)).
 
 
