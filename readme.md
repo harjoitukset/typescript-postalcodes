@@ -5,7 +5,11 @@ Tämän koodaustehtävän tavoitteena on luoda tarvittavat pohjatiedot myöhemmi
 Tehtävän suorittamiseksi tarvitset [Node.js-suoritusympäristön](https://nodejs.org/) sekä npm-pakettienhallintasovelluksen, joka tulee tyypillisesti Node.js-asennuksissa mukana. Suosittelemme käyttämään tehtävissä [uusinta LTS-versiota (Long Term Support)](https://github.com/nodejs/release#release-schedule).
 
 > [!TIP]
-> Suosittelemme ratkaisemaan tämän tehtävän kehityskontissa, joka tarjoaa valmiiksi määritetyn ympäristön, jossa Node.js ja npm ovat asennettuina. Kehityskontti eristää projektin muusta käyttöjärjestelmästä, joten sillä voi olla myös positiivisia tietoturvavaikutuksia. Katso lisätietoja [kehityskontin readme.md-tiedostosta](./.devcontainer/readme.md).
+> Suosittelemme ratkaisemaan tämän tehtävän [kehityskontissa](https://code.visualstudio.com/docs/devcontainers/containers) tai [CodeSpacessa](https://github.com/features/codespaces), joka tarjoaa valmiiksi määritetyn ympäristön, jossa Node.js ja npm ovat asennettuina.
+>
+> Kehityskontti eristää projektin muusta käyttöjärjestelmästä, joten sillä voi olla myös positiivisia tietoturvavaikutuksia.
+>
+> Katso lisätietoja [kehityskontin readme.md-tiedostosta](./.devcontainer/readme.md).
 
 
 ## Tehtävän lähtökohta ja projektin valmistelu
@@ -306,6 +310,13 @@ Tehtävän voi ratkaista useilla tavoilla, joten käytä hetki ongelman pohtimis
 > ```
 
 Toteuta ohjelmasi siten, että syötetyn postitoimipaikan **kirjainkoolla ei ole merkitystä**. Huolehdi myös siitä, että tuntemattoman nimen syöttäminen ei kaada ohjelmaa.
+
+
+## Ratkaisun lähettäminen ja arviointi
+
+Kun olet saanut tehtävän ratkaistua, voit lähettää ratkaisusi arvioitavaksi. Tehtävän arviointi tapahtuu automaattisesti GitHubin Actions-työkalulla, joka suorittaa testit ja tarkistaa niiden tulokset. Lähetä ratkaisusi `git status`, `git add`, `git commit` ja `git push` -komentojen avulla. Kun muutokset on pusattu GitHubiin, arviointi käynnistyy automaattisesti.
+
+Tehtävän maksimipistemäärä on 100 pistettä, joka skaalataan arvosanaksi asteikolle 0-5 jakamalla saatu pistemäärä 20:lla.
 
 
 ## Vinkkejä
